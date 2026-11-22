@@ -1,0 +1,292 @@
+/* ============================================================
+   Volejbal Čerčany – hlavní styl webu
+   ============================================================ */
+
+:root {
+  --paper:        #FAF9F6;
+  --surface:      #FFFFFF;
+  --ink:          #1B2A3A;
+  --navy-900:     #10283E;
+  --navy-800:     #173A5E;
+  --teal-700:     #1F5F7A;
+  --accent:       #E8622C;   /* volejbalová oranžová */
+  --accent-dark:  #BA4A1D;   /* oranžová pro text na světlém */
+  --accent-soft:  #FDF1E8;
+  --on-accent:    #0A1A29;   /* tmavý text na oranžové (kontrast > 5:1) */
+  --muted:        #51657A;
+  --line:         #E0DCD2;
+  --radius:       6px;
+  --maxw:         68rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, Tahoma, Arial, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+img { max-width: 100%; height: auto; }
+
+/* Odkazy jsou vždy podtržené */
+a { color: var(--teal-700); text-decoration: underline; text-underline-offset: 0.15em; }
+a:hover { color: var(--navy-800); text-decoration-thickness: 0.15em; }
+
+:focus-visible { outline: 3px solid var(--accent-dark); outline-offset: 2px; }
+
+.container { width: min(var(--maxw), 100% - 2.5rem); margin-inline: auto; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--navy-800); color: #fff;
+  padding: 0.7rem 1.1rem; z-index: 100; font-weight: 700;
+}
+.skip-link:focus { left: 0.5rem; top: 0.5rem; color: #fff; }
+
+.no-print-identity { display: none; } /* vidět jen v tisku (print.css) */
+
+/* ---------- Hlavička ---------- */
+.site-header {
+  background: linear-gradient(170deg, var(--navy-900) 0%, var(--navy-800) 100%);
+  color: #F4F7FA;
+  border-bottom: 3px solid var(--accent);
+}
+.header-inner {
+  width: min(var(--maxw), 100% - 2.5rem);
+  margin-inline: auto;
+  padding: 0.8rem 0 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 2rem;
+}
+.brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; color: inherit; }
+.brand:hover { color: inherit; }
+.brand-name {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.15;
+}
+.brand-sub {
+  display: block;
+  font-size: 0.78rem;
+  color: #D8B89B;
+}
+.header-meta { font-size: 0.85rem; color: #C0CDD8; text-align: right; margin: 0; }
+.header-meta a { color: #fff; }
+
+/* Navigace – aktivní položka podtržená oranžovou */
+.main-nav { width: min(var(--maxw), 100% - 2.5rem); margin-inline: auto; border-top: 1px solid rgba(255,255,255,0.18); }
+.main-nav ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 0.1rem;
+}
+.main-nav a {
+  display: inline-block;
+  color: #E8EEF4; text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  padding: 0.65rem 0.8rem;
+  border-bottom: 3px solid transparent;
+}
+.main-nav a:hover { color: #FFFFFF; border-bottom-color: rgba(255,255,255,0.4); }
+.main-nav a[aria-current="page"] {
+  color: #FFFFFF;
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Hlavní foto / úvodník ---------- */
+.hero {
+  position: relative;
+  background: linear-gradient(160deg, var(--navy-900) 0%, var(--navy-800) 70%, var(--teal-700) 130%);
+  color: #FDFCF9;
+  border-bottom: 1px solid var(--line);
+}
+.hero-inner {
+  position: relative;
+  width: min(var(--maxw), 100% - 2.5rem);
+  margin-inline: auto;
+  padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+}
+.hero-note {
+  font-size: 0.85rem; font-weight: 600; color: #EBCDB9;
+  margin: 0 0 0.9rem;
+}
+.hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.3rem, 5.5vw, 3.3rem);
+  line-height: 1.1; margin: 0 0 0.9rem; max-width: 24ch; color: #FFFFFF;
+}
+.hero .lead { font-size: 1.12rem; max-width: 44ch; margin: 0 0 1.4rem; color: #EDEFF2; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+/* Tlačítka – plochá, bez lesku */
+.btn {
+  display: inline-block; font-weight: 700; text-decoration: none; border-radius: 4px;
+  padding: 0.65rem 1.1rem; font-size: 0.98rem; border: 1px solid transparent;
+}
+.btn-accent { background: var(--accent); color: var(--on-accent); border-color: #B84A1A; }
+.btn-accent:hover { background: #D0551F; color: var(--on-accent); }
+.btn-navy { background: var(--navy-800); color: #fff; border-color: var(--navy-900); }
+.btn-navy:hover { background: var(--teal-700); color: #fff; }
+.btn-ghost { border-color: rgba(255,255,255,0.75); color: #FFFFFF; background: transparent; }
+.btn-ghost:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+/* ---------- Sekce a nadpisy ---------- */
+.section { padding: clamp(2rem, 4.5vw, 3rem) 0; }
+.section + .section { border-top: 1px solid var(--line); }
+h1, h2, h3, h4 { font-family: Georgia, "Times New Roman", serif; color: var(--navy-800); line-height: 1.25; }
+h1 { font-size: clamp(1.8rem, 3.8vw, 2.4rem); }
+.section-title { font-size: clamp(1.4rem, 2.6vw, 1.8rem); margin: 0 0 1rem; }
+.muted { color: var(--muted); }
+.small { font-size: 0.87rem; }
+
+/* ---------- Dvousloupcový layout ---------- */
+.two-col { display: grid; grid-template-columns: minmax(0, 1fr) 19.5rem; gap: 2rem; align-items: start; }
+.sidebar-box {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.15rem 1.25rem;
+}
+.sidebar-box h2, .sidebar-box h3 { font-size: 1.05rem; margin-top: 0; color: var(--navy-800); font-family: inherit; font-weight: 700; }
+.sidebar-box ul { margin: 0; padding-left: 1.1rem; }
+.fact-list { margin: 0; }
+.fact-list div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.4rem 0; border-bottom: 1px dashed var(--line); }
+.fact-list div:last-child { border-bottom: 0; }
+.fact-list dt { color: var(--muted); }
+.fact-list dd { margin: 0; font-weight: 700; text-align: right; }
+
+/* ---------- Karty týmů – ploché, s horní linkou ---------- */
+.teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16.5rem, 1fr)); gap: 1.25rem; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--navy-800);
+  border-radius: var(--radius); padding: 1rem 1.1rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.card h2, .card h3 { margin: 0; font-size: 1.18rem; }
+.tag {
+  font-size: 0.78rem; font-weight: 700; color: var(--teal-700);
+}
+.tag-orange { color: var(--accent-dark); }
+
+/* ---------- Nadcházející zápasy ---------- */
+.match-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.match-item {
+  display: grid; grid-template-columns: 3.8rem 1fr; gap: 0.85rem; align-items: center;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+}
+.match-date {
+  text-align: center; background: var(--navy-800); color: #fff; border-radius: 4px;
+  padding: 0.35rem 0.2rem; line-height: 1.15;
+}
+.match-date b { display: block; font-family: Georgia, serif; font-size: 1.15rem; }
+.match-date span { font-size: 0.68rem; color: #CBD6DF; text-transform: uppercase; letter-spacing: 0.05em; }
+.match-body b { color: var(--navy-800); }
+
+/* ---------- Tabulka zápasů ---------- */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+table.schedule { width: 100%; border-collapse: collapse; background: var(--surface); font-size: 0.95rem; }
+table.schedule caption {
+  text-align: left; padding: 0.6rem 0.9rem; background: var(--navy-800); color: #fff;
+  font-weight: 700; font-family: Georgia, serif; caption-side: top;
+}
+table.schedule th, table.schedule td { padding: 0.55rem 0.8rem; text-align: left; border-bottom: 1px solid var(--line); }
+table.schedule thead th { background: #EDEFF0; color: var(--navy-800); font-size: 0.8rem; }
+table.schedule tbody tr:nth-child(even) { background: #FCFCFA; }
+table.schedule tbody tr:hover { background: var(--accent-soft); }
+
+/* ---------- Aktuality ---------- */
+.article-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.article-card { border-bottom: 1px solid var(--line); padding: 1.1rem 0.1rem; }
+.article-card h2, .article-card h3 { margin: 0.15rem 0 0.35rem; font-size: 1.28rem; }
+.article-card time { font-size: 0.82rem; font-weight: 700; color: var(--accent-dark); }
+
+/* ---------- Obrázky s popiskem ---------- */
+figure { margin: 0; }
+.photo { border: 1px solid var(--line); border-radius: var(--radius); display: block; }
+figcaption { font-size: 0.84rem; color: var(--muted); margin-top: 0.4rem; }
+
+/* ---------- Výzva (CTA pás s fotkou) ---------- */
+.cta-band {
+  position: relative; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  background: var(--navy-900) url("../img/mic.jpg") center 45% / cover no-repeat;
+}
+.cta-band::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16,40,62,0.92), rgba(16,40,62,0.6) 60%, rgba(16,40,62,0.15)); }
+.cta-band-inner { position: relative; padding: clamp(1.5rem, 4vw, 2.5rem); max-width: 32rem; color: #FDFCF9; }
+.cta-band-inner h2 { color: #fff; margin: 0 0 0.45rem; font-size: 1.45rem; }
+.cta-band-inner p { margin: 0 0 1rem; color: #E9EDF1; }
+
+/* ---------- Informační box ---------- */
+.notice {
+  background: var(--accent-soft); border: 1px solid #EAC4AC;
+  border-radius: var(--radius); padding: 0.75rem 1rem; margin: 1.1rem 0;
+}
+
+/* ---------- FAQ (definition list) ---------- */
+.faq { margin: 0; }
+.faq dt { font-weight: 700; color: var(--navy-800); margin-top: 0.75rem; }
+.faq dd { margin: 0.15rem 0 0; }
+
+/* ---------- Patička ---------- */
+.site-footer {
+  background: var(--navy-900);
+  color: #C3CFD9; font-size: 0.92rem; border-top: 3px solid var(--accent);
+}
+.footer-grid {
+  width: min(var(--maxw), 100% - 2.5rem); margin-inline: auto;
+  display: grid; grid-template-columns: 1.25fr 1fr 1fr 1fr; gap: 1.5rem 2rem;
+  padding: 2rem 0 0.9rem;
+}
+.site-footer h2 {
+  color: #F0C9A8; font-size: 0.85rem; margin: 0 0 0.4rem;
+  font-family: inherit; font-weight: 700;
+}
+.site-footer a { color: #fff; }
+.site-footer address { font-style: normal; }
+.site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.25rem; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.14);
+  width: min(var(--maxw), 100% - 2.5rem); margin-inline: auto;
+  padding: 0.7rem 0 1rem; font-size: 0.82rem; color: #8FA4B2;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem;
+}
+
+/* ---------- Responzivita ---------- */
+@media (max-width: 60rem) {
+  .two-col { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .header-meta { display: none; }
+}
+@media (max-width: 40rem) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .main-nav a { padding: 0.5rem 0.6rem; font-size: 0.88rem; }
+  .match-item { grid-template-columns: 3.2rem 1fr; }
+  .hero-actions .btn { width: 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ---------- Utility třídy (bez inline stylů) ---------- */
+.u-mt-1   { margin-top: 1rem; }
+.u-mt-125 { margin-top: 1.25rem; }
+.u-mt-15  { margin-top: 1.5rem; }
+.u-mt-175 { margin-top: 1.75rem; }
+.u-mt-2   { margin-top: 2rem; }
+.u-mb-0   { margin-bottom: 0; }
+.u-max-60 { max-width: 60ch; }
+.u-max-65 { max-width: 65ch; }
+.address-box {
+  font-style: normal; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.15rem;
+}

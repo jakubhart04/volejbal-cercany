@@ -1,0 +1,85 @@
+/* ============================================================
+   Volejbal Čerčany – tisková verze
+   Tiskneme jen to, co má smysl: obsah, identifikaci webu
+   a kontaktní údaje. Skrývá se navigace, dekorace a tlačítka.
+   ============================================================ */
+
+@page { margin: 1.8cm 2cm; }
+
+body {
+  background: #fff !important;
+  color: #000 !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11.5pt;
+  line-height: 1.45;
+}
+
+/* Identifikace webu při tisku (nahrazuje skrytou patičku) */
+.no-print-identity {
+  display: block !important;
+  border-bottom: 2pt solid #000;
+  padding-bottom: 6pt;
+  margin-bottom: 14pt;
+  font-size: 9.5pt;
+}
+.no-print-identity strong { font-size: 12pt; }
+
+/* Skryjeme vše, co v tisku postrádá smysl */
+.skip-link,
+.site-header,
+.main-nav,
+.hero,
+.hero-actions,
+.cta-band,
+.btn,
+.site-footer,
+img,
+figure {
+  display: none !important;
+}
+
+.container,
+.hero-inner { width: auto; margin: 0; padding: 0; }
+
+.section { padding: 10pt 0; border: 0 !important; }
+
+h1, h2, h3, h4 { color: #000 !important; page-break-after: avoid; }
+h1 { font-size: 20pt; }
+h2 { font-size: 15pt; }
+
+.two-col,
+.teams-grid,
+.footer-grid,
+.article-list { display: block; }
+
+.card,
+.sidebar-box,
+.article-card,
+.match-item {
+  border: 1pt solid #000 !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  page-break-inside: avoid;
+  border-radius: 0 !important;
+  margin-bottom: 8pt;
+}
+
+.match-date { border: 1pt solid #000 !important; border-radius: 0 !important; background: #fff !important; color: #000 !important; }
+.match-date b, .match-date span { color: #000 !important; }
+
+.tag { border: 1pt solid #000; color: #000 !important; background: #fff !important; }
+
+/* Tabulka zápasů zůstává, přebalíme ji do čitelné tiskové podoby */
+.table-wrap { display: block !important; overflow: visible; border: 0; box-shadow: none; }
+table.schedule { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+table.schedule caption { background: #fff !important; color: #000 !important; border-bottom: 1.5pt solid #000; }
+table.schedule th, table.schedule td { border: 0.75pt solid #000 !important; padding: 4pt 6pt; }
+table.schedule thead th { background: #eee !important; color: #000 !important; }
+table.schedule tr, table.schedule td, table.schedule th { page-break-inside: avoid; }
+
+/* Odkazy: v tisku vypíšeme cílovou adresu */
+a { color: #000 !important; text-decoration: underline; }
+a[href^="http"]::after,
+a[href^="mailto"]::after { content: " (" attr(href) ")"; font-size: 8.5pt; }
+
+.notice { background: #fff !important; border: 1pt solid #000 !important; }
